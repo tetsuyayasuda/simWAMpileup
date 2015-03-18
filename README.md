@@ -1,6 +1,6 @@
 # simWAMpileup
 A Monte-Carlo simulation code of the signal processor in WAM onboard Suzaku satellite.
-====
+
 
 ## Overview
 
@@ -12,7 +12,6 @@ A Monte-Carlo simulation code of the signal processor in WAM onboard Suzaku sate
 
 ## Licence
 You can use this software under the MIC license.
-[MIT](https://github.com/tcnksm/tool/blob/master/LICENCE)
 
 ## Author
 - Tetsuya Yasuda ( yasuda AT heal.phy.saitama-u.ac.jp )
