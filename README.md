@@ -11,7 +11,15 @@ Inputs of this software are a background spectrum (FITS format), a light curve (
 - SLI Libraries/SFITSIO [http://www.ir.isas.jaxa.jp/~cyamauch/sli/index.html]
 - ROOT [https://root.cern.ch/drupal/]
 
+## Test Environment
+- CentOS 6.6
+- ROOT ver5.99/05
+- SLLIB 1.4.2
+- SFITSIO 1.4.2
+
 ## Usage
+./readResponse [resp] [bgd] [src] [incidentCountRate] [option:lightcurve.qdp] [option:overFlowRate]
+
 
 ## Install
 
