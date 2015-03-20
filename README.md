@@ -32,10 +32,10 @@ $ ln -s ../build/simWAMpileup .
 ### Preparation
 You should prepare a source spectrum on the FITS format.
 - example
-  $ xspec
-  xspec> model powerlaw
-  xspec> fakeit none
-  (then you should choice [Use counting statistics] no)
+$ xspec
+xspec> model powerlaw
+xspec> fakeit none
+(then you should choice [Use counting statistics] no)
 
 ### Run
 ./readResponse [resp:FITS] [bgd:FITS] [src:FITS] [incidentCountRate:int] [lightcurve.qdp:ASCII] [overFlowRate:int]
