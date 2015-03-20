@@ -18,10 +18,39 @@ Inputs of this software are a background spectrum (FITS format), a light curve (
 - SFITSIO 1.4.2
 
 ## Usage
-./readResponse [resp] [bgd] [src] [incidentCountRate] [option:lightcurve.qdp] [option:overFlowRate]
+### Compile
+$ ls
+source/
+$ mkdir build run
+$ cd build 
+$ cmake ../source
+$ make
+$ cd ../run
+$ ln -s ../build/simWAMpileup .
 
 
-## Install
+### Preparation
+You should prepare a source spectrum on the FITS format.
+- example
+  $ xspec
+  xspec> model powerlaw
+  xspec> fakeit none
+  (then you should choice [Use counting statistics] no)
+
+### Run
+./readResponse [resp:FITS] [bgd:FITS] [src:FITS] [incidentCountRate:int] [lightcurve.qdp:ASCII] [overFlowRate:int]
+
+[inputs]
+- resp: a FITS file of response matrix 
+- bgd:  a FITS file of background spectrum
+- src:  a FITS file of source spectrum before the pileup effect affected
+- incidentCountRate: int value of total counts of the source plus the background components in the WAM entire energy band for 1 second
+- lightcurve: a ASCII file of space-separated table, 2 columns (time and counts) and n rows.
+- overflowRate: int value of over flow. default value is 700.
+
+[output]
+- Dead.fits : estimated spectrum affected by the pileup effect
+
 
 ## Licence
 You can use this software under the MIC license.
