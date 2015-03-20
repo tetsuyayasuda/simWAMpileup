@@ -19,25 +19,27 @@ Inputs of this software are a background spectrum (FITS format), a light curve (
 
 ## Usage
 ### Compile
-$ ls
-source/
-$ mkdir build run
-$ cd build 
-$ cmake ../source
-$ make
-$ cd ../run
-$ ln -s ../build/simWAMpileup .
+ls  
+ source/  
+mkdir build run  
+cd build  
+cmake ../source  
+make  
+cd ../run  
+ln -s ../build/simWAMpileup  
 
 
-### Preparation
+### Preparation  
 You should prepare a source spectrum on the FITS format.
-- example
-$ xspec
-xspec> model powerlaw
-xspec> fakeit none
-(then you should choice [Use counting statistics] no)
 
-### Run
+[example]
+
+$ xspec  
+xspec> model powerlaw  
+xspec> fakeit none  
+(then you should choice [Use counting statistics] no)  
+
+### Run  
 ./readResponse [resp:FITS] [bgd:FITS] [src:FITS] [incidentCountRate:int] [lightcurve.qdp:ASCII] [overFlowRate:int]
 
 [inputs]
