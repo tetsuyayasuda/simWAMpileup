@@ -40,7 +40,7 @@ xspec> fakeit none
 (then you should choice [Use counting statistics] no)  
 
 ### Run  
-./readResponse [resp:FITS] [bgd:FITS] [src:FITS] [incidentCountRate:int] [lightcurve.qdp:ASCII] [overFlowRate:int]
+./simWAMpileup [resp:FITS] [bgd:FITS] [src:FITS] [incidentCountRate:int] [lightcurve.qdp:ASCII] [overFlowRate:int]
 
 [inputs]
 - resp: a FITS file of response matrix 
