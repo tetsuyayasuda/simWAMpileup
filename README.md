@@ -19,14 +19,14 @@ Inputs of this software are a background spectrum (FITS format), a light curve (
 
 ## Usage
 ### Compile
-ls  
+$ ls  
  source/  
-mkdir build run  
-cd build  
-cmake ../source  
-make  
-cd ../run  
-ln -s ../build/simWAMpileup  
+$ mkdir build run  
+$ cd build  
+$ cmake ../source  
+$ make  
+$ cd ../run  
+$ ln -s ../build/simWAMpileup  
 
 
 ### Preparation  
