@@ -85,31 +85,24 @@ int main(int argc, char *argv[]){
   readRespWAM* readResp = new readRespWAM();
   readResp->setRespFits( respName );
   int energyBins = readResp->getEboundsRowNum();
-  //respMatrix.dprint();
   std::cout << "readResp ........... done" << std::endl;
 
 
   // read bgd fits ----------------------------------
   readSpecWAM* readBgd = new readSpecWAM();
   readBgd->setSpecFits( bgdName );
-  //double livetimeBgd = readBgd->getLivetime();
   double exposureBgd = readBgd->getExposure();
   sli::mdarray_double bgdMatrix = readBgd->getSpecMatrix();
-  //bgdMatrix /= livetimeBgd;
   bgdMatrix /= exposureBgd;
-  //bgdMatrix.dprint();
   std::cout << "readBgd ........... done" << std::endl;
 
 
   // read src fits (fakeit pha) --------------
   readSpecWAM* readSrc = new readSpecWAM();
   readSrc->setSpecFits( srcName );
-  //double livetimeSrc = readSrc->getLivetime();
   double exposureSrc = readSrc->getExposure();
   sli::mdarray_double srcMatrix = readSrc->getSpecMatrix();
-  //srcMatrix /= livetimeSrc;
   srcMatrix /= exposureSrc;
-  //srcMatrix.dprint();
   std::cout << "readSrc ........... done" << std::endl;
 
 
@@ -129,7 +122,6 @@ int main(int argc, char *argv[]){
     std::cout << "inteLightcurve ........... done" <<std::endl;}
   runPileup->inteBgd( bgdMatrix );
   runPileup->inteSrc( srcMatrix );
-  //runPileup->setOverflowRate( overflowRate, livetimeBgd );
   runPileup->setOverflowRate( overflowRate, 1.0 );
   runPileup->runPileup();
   std::cout << "runPileup ......... done" << std::endl;
@@ -142,15 +134,6 @@ int main(int argc, char *argv[]){
   sli::mdarray_double randSrcMatrix = runPileup->getSrcMatrix();
   sli::mdarray_double randBgdMatrix = runPileup->getBgdMatrix();
   sli::mdarray_double randDeadMatrix = runPileup->getDeadMatrix();
-
-
-  // plot QDP  ---------------------------------- 
-  //runPileup->outputLightCurve();
-  //runPileup->outputOriginSpec();
-  //runPileup->outputSrcSpec();
-  //runPileup->outputBgdSpec();
-  //runPileup->outputDeadSpec();
-  //std::cout << "QDP files ........ created" << std::endl;
 
 
   // make FITS header  ---------------------------------- 
@@ -189,24 +172,6 @@ int main(int argc, char *argv[]){
   sz2 = output2.write_stream( (char*)(templateBgd+".fits").c_str() );  
   sz3 = output3.write_stream( (char*)(templateDead+".fits").c_str() );  
   std::cout << "FITS files ....... created" << std::endl;
-
-
-
-  // write response matrix ----------------------------
-  //for(int i=0; i<energyBins; i++){
-  //  outputFits1.table("EBOUNDS").col("CHANNEL").assign( i+1, i );
-  //  outputFits1.table("EBOUNDS").col("E_MIN").assign( readResp->getEboundsRangeLow( i ), i );
-  //  outputFits1.table("EBOUNDS").col("E_MAX").assign( readResp->getEboundsRangeHigh( i ), i );
-  //  outputFits1.table("MATRIX").col("N_GRP").assign( 1, i );
-  //  outputFits1.table("MATRIX").col("F_CHAN").assign( 1, i );
-  //  outputFits1.table("MATRIX").col("N_CHAN").assign( 54, i );
-  //  outputFits1.table("MATRIX").col("ENERG_LO").assign( readResp->getEboundsRangeLow( i ), i );
-  //  outputFits1.table("MATRIX").col("ENERG_HI").assign( readResp->getEboundsRangeHigh( i ), i );
-  //  for(int j=0; j<energyBins; j++){
-  //    outputFits1.table("MATRIX").col("MATRIX").assign( respMatrix.dvalue(i, j), i, j );
-  //  }
-  // }
-  //sz1 = outputFits1.write_stream( "resp.fits" );  
 
 
   // output simulation result --------------------------
